@@ -6,8 +6,8 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <meta charset="utf-8">
   <title>Shoe Catalogue | M Davids</title>
-  <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="description" content="A simple online shoe catalogue">
+  <meta name="author" content="Michael Davids">
 
   <!-- Mobile Specific Metas
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -17,11 +17,17 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
 
+  <!-- JavaScript
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="js/shoe-catalogue-dom.js" charset="utf-8"></script><!--Linking JavaScript to index-->
+
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
+
+
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -34,9 +40,39 @@
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
     <div class="row">
-      <div class="one-half column" style="margin-top: 25%">
+      <div class="twelve columns" style="margin-top: 10%; text-align:center;">
         <h4>Shoe Catalogue</h4>
-        <p>.</p>
+        <p>A simple online shoe catalogue</p>
+      </div>
+    </div>
+    <div class="row search-area" style="margin-top: 5%; text-align:center;">
+      <select class="brand" name="brand">
+         <option value="Adiddas">Adidas</option>
+         <option value="Nike">Nike</option>
+         <option value="Puma">Puma</option>
+         <option value="Reebok">Reebok</option>
+      </select>
+      <select class="size" name="size">
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option>
+         <option value="10">10</option>
+         <option value="11">11</option>
+         <option value="12">12</option>
+      </select>
+      <select class="color" name="color">
+         <option value="white">White</option>
+         <option value="black">Black</option>
+         <option value="red">Red</option>
+         <option value="green">Green</option>
+      </select>
+      <button id="search-button" type="button" name="search" >Search</button>
+    </div>
+    <div class="row search-results" style="margin: 5% 5%; border: 1px solid black;">
+      <div class="three columns" style="border: 1px solid black; height:300px; width:250px;">
+
       </div>
     </div>
   </div>
