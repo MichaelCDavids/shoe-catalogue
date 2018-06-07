@@ -1,3 +1,5 @@
 function ShoeCatalogue(){
-   
+   function displayShoes(){
+
+   }
 }
