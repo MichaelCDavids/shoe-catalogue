@@ -10,7 +10,7 @@
   <meta name="author" content="Michael Davids">
 
   <!-- Mobile Specific Metas
-  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  ––––––––––––––––––––––––––––––––––––––––––––––––––-->
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <!-- FONT
@@ -19,8 +19,57 @@
 
   <!-- JavaScript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="js/shoe-catalogue-dom.js" charset="utf-8"></script><!--Linking JavaScript to index-->
-
+<!-- Handlebars Template
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+   <script type="text/x-template" class="afterSearchTemplate">
+       {{#each filteredShoes}}
+         <table>
+            <tr class="">
+              <td class="">Brand:</td>
+              <td class="">{{brand}}</td>
+            </tr>
+            <tr class="">
+              <td class="">Color:</td>
+              <td class="">{{color}}</td>
+            </tr>
+            <tr class="">
+              <td class="">Stock Left:</td>
+              <td class="">{{in_stock}}</td>
+            </tr>
+            <tr class="">
+              <td class="">Price:</td>
+              <td class="">{{price}}</td>
+            </tr>
+         </table>
+       {{/each}}
+    </script>
+    <script type="text/x-template" class="availableStockTemplate">
+       {{#each shoes}}
+         <table class="insertAvailableStockTemplate">
+           <tr class="">
+             <td class="">Color:</td>
+             <td class="">{{color}}</td>
+           </tr>
+           <tr class="">
+             <td class="">Brand:</td>
+             <td class="">{{brand}}</td>
+           </tr>
+           <tr class="">
+             <td class="">Price:</td>
+             <td class="">{{price}}</td>
+           </tr>
+           <tr class="">
+             <td class="">size:</td>
+             <td class="">{{size}}</td>
+           </tr>
+           <tr class="">
+             <td class="">In Stock:</td>
+             <td class="">{{in_stock}}</td>
+           </tr>
+        </table>
+       {{/each}}
+    </script>
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
@@ -44,6 +93,8 @@
         <h4>Shoe Catalogue</h4>
         <p>A simple online shoe catalogue</p>
       </div>
+    </div>
+    <div class="row">
     </div>
     <div class="row search-area" style="margin-top: 5%; text-align:center;">
       <select class="brand" name="brand">
@@ -70,8 +121,13 @@
       </select>
       <button id="search-button" type="button" name="search" >Search</button>
     </div>
+    <div class="row available-stock">
+       <div class="four columns insertAvailableStockElement">
+
+       </div>
+    </div>
     <div class="row search-results" style="margin: 5% 5%; border: 1px solid black;">
-      <div class="three columns" style="border: 1px solid black; height:300px; width:250px;">
+      <div class="four columns insertSearchDataElement">
 
       </div>
     </div>
@@ -80,4 +136,6 @@
 <!-- End Document
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
 </body>
+<script src="js/shoe-catalogue-factory.js" charset="utf-8"></script><!--Linking JavaScript to index-->
+<script src="js/shoe-catalogue-dom.js" charset="utf-8"></script><!--Linking JavaScript to index-->
 </html>

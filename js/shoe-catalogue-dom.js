@@ -1,34 +1,35 @@
-document.addEventListener('DOMContentLoaded',function(){
    var brandSelector = document.querySelector(".brand");
    var sizeSelector = document.querySelector(".size");
    var colorSelector = document.querySelector(".color");
    var searchButton = document.querySelector("#search-button");
 
-   //Reference to template
-   var templateSource = document.querySelector(".ShoeCatalogueTemplate").innerHTML;
-   //Compile the template
+   var addBrand = document.querySelector(".brandBax");
+   var addSize = document.querySelector(".sizeBox");
+   var addColor = document.querySelector(".colorBox");
+   var addButton = document.querySelector("#add-button");
+
+
+   //Template for available stock
+   var availableStockTemplateSource = document.querySelector(".availableStockTemplate").innerHTML;
+   var templateCatalogue = Handlebars.compile(availableStockTemplateSource);
+   var availableStockElement = document.querySelector(".insertAvailableStockElement");
+
+   //Template for search results
+   var templateSource = document.querySelector(".afterSearchTemplate").innerHTML;
    var templateShoeCatalogue = Handlebars.compile(templateSource);
-   //Reference to the place to insert template
-   var insertDataElement = document.querySelector(".insertShoeCatalogueTemplate");
+   var insertSearchDataElement = document.querySelector(".insertSearchDataElement");
 
    //instance of the factory function
    var shoeCatalogue = ShoeCatalogue();
 
    //on page load event
    window.addEventListener('load',function(){
-     insertDataElement.innerHTML = templateShoeCatalogue({
-       shoes : shoeCatalogue.displayShoes()
-     });
+     availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.returnedShoes()});
    });
 
    searchButton.addEventListener('click',function(){
-      var brand = brandSelector.value;
-      var size = sizeSelector.value;
-      var color = colorSelector.value;
-
-      insertDataElement.innerHTML = templateShoeCatalogue({
-       shoes : shoeCatalogue.filteredShoes()
-      });
-   })
-
-});
+      insertSearchDataElement.innerHTML = templateShoeCatalogue({filteredShoes : shoeCatalogue.filteredShoes()});
+   });
+   // addButton.addEventListener('click',function(){
+   //
+   // });
