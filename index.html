@@ -15,11 +15,10 @@
 
   <!-- FONT
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <!-- <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css"> -->
 
   <!-- JavaScript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-  <script src="lodash.js"></script>
   <!-- Handlebars Template
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
@@ -83,6 +82,17 @@
       </div>
     {{/each}}
   </script>
+  <script type="text/x-template" class="shoppingCartTemplate">
+    <h5>Cart Total</h5>
+      <div class="twelve columns cart">
+        <table>
+          <tr class="">
+            <td class="">Total Cost:</td>
+            <td class="">{{total}}</td>
+          </tr>
+        </table>
+      </div>
+  </script>
 
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -105,6 +115,11 @@
         <h4>Shoe Catalogue</h4>
         <p>A simple online shoe catalogue</p>
       </div>
+    </div>
+    <div class="row shopping-cart" style="margin: 5% 5%; border: 1px solid black;">
+     <div class="twelve columns insertShoppingCartElement">
+
+     </div>
     </div>
     <div class="row">
     </div>
@@ -204,6 +219,8 @@
       <input type="number" name="addPrice" class="addPrice">
       <input type="number" name="addstock" class="addStock">
       <button id="add-button" type="button" name="add" >Add</button>
+      <button id="clear-button" type="button" name="clear" >Clear Cart</button>
+
     </div>
     <div class="row available-stock">
        <div class="twelve columns insertAvailableStockElement">

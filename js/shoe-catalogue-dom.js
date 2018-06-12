@@ -9,6 +9,7 @@
    var addSize = document.querySelector(".addSize");
    var addStock = document.querySelector(".addStock");
    var addButton = document.querySelector("#add-button");
+   var clearButton = document.querySelector("#clear-button");
 
 
    //Template for available stock
@@ -21,17 +22,36 @@
    var templateShoeCatalogue = Handlebars.compile(templateSource);
    var insertSearchDataElement = document.querySelector(".insertSearchDataElement");
 
+   //Template for shoppingCart
+   var templateSource = document.querySelector(".shoppingCartTemplate").innerHTML;
+   var templateShoppingCart = Handlebars.compile(templateSource);
+   var insertShoppingCartElement = document.querySelector(".insertShoppingCartElement");
+
+   var cartStore = localStorage.getItem('Cart');
+   var storedCart = JSON.parse(cartStore);
+
+   var shoeStore = localStorage.getItem('Shoes');
+   var storedShoes = JSON.parse(cartStore);
+
    //instance of the factory function
-   var shoeCatalogue = ShoeCatalogue();
+   var shoeCatalogue = ShoeCatalogue(storedShoes, storedCart);
 
    function addToCart(id) {
-      console.log(id);
-      localStorage.setItem('cart',JSON.stringify(shoeCatalogue.addCart(id)));
+      shoeCatalogue.addCart(id);
+
+      // shoeCatalogue.cartTotal();
+      availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
+      insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+
+      localStorage.setItem('Cart',JSON.stringify(shoeCatalogue.Cart()));
+      // localStorage.setItem('Shoes',JSON.stringify(shoeCatalogue.shoesInStock()));
    }
 
    //on page load event
    window.addEventListener('load',function(){
+      console.log(shoeCatalogue.shoesInStock());
      availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
+     insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
    });
 
    searchButton.addEventListener('click',function(){
@@ -46,5 +66,13 @@
      var s = Number(addSize.value);
      var i = Number(addStock.value);
      shoeCatalogue.addStockItem(c,b,p,s,i);
+     localStorage.setItem("Shoes",JSON.stringify(shoeCatalogue.shoesInStock()))
      availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
+   });
+
+   clearButton.addEventListener('click',function(){
+      shoeCatalogue.Clear();
+      localStorage.removeItem('Cart');
+      availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
+      insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
    });
