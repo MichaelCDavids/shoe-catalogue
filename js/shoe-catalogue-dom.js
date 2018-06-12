@@ -24,10 +24,9 @@
    //instance of the factory function
    var shoeCatalogue = ShoeCatalogue();
 
-
    function addToCart(id) {
-      // call function in factory
-      //shoeCatalogue.addToCart(id)
+      console.log(id);
+      localStorage.setItem('cart',JSON.stringify(shoeCatalogue.addCart(id)));
    }
 
    //on page load event
@@ -42,16 +41,10 @@
 
    addButton.addEventListener('click',function(){
      var c = addColor.value;
-     console.log(c);
      var b = addBrand.value;
-     console.log(b);
      var p = Number(addPrice.value);
-     console.log(p);
      var s = Number(addSize.value);
-     console.log(s);
      var i = Number(addStock.value);
-     console.log(i);
      shoeCatalogue.addStockItem(c,b,p,s,i);
-     console.log(shoeCatalogue.shoesInStock());
      availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    });
