@@ -19,64 +19,76 @@
 
   <!-- JavaScript
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
-<!-- Handlebars Template
-–––––––––––––––––––––––––––––––––––––––––––––––––– -->
- <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-   <script type="text/x-template" class="afterSearchTemplate">
-       {{#each filteredShoes}}
-         <table>
-            <tr class="">
-              <td class="">Brand:</td>
-              <td class="">{{brand}}</td>
-            </tr>
-            <tr class="">
-              <td class="">Color:</td>
-              <td class="">{{color}}</td>
-            </tr>
-            <tr class="">
-              <td class="">Stock Left:</td>
-              <td class="">{{in_stock}}</td>
-            </tr>
-            <tr class="">
-              <td class="">Price:</td>
-              <td class="">{{price}}</td>
-            </tr>
-         </table>
-       {{/each}}
-    </script>
-    <script type="text/x-template" class="availableStockTemplate">
-       {{#each shoes}}
-         <table class="insertAvailableStockTemplate">
-           <tr class="">
-             <td class="">Color:</td>
-             <td class="">{{color}}</td>
-           </tr>
-           <tr class="">
-             <td class="">Brand:</td>
-             <td class="">{{brand}}</td>
-           </tr>
-           <tr class="">
-             <td class="">Price:</td>
-             <td class="">{{price}}</td>
-           </tr>
-           <tr class="">
-             <td class="">size:</td>
-             <td class="">{{size}}</td>
-           </tr>
-           <tr class="">
-             <td class="">In Stock:</td>
-             <td class="">{{in_stock}}</td>
-           </tr>
+  <script src="lodash.js"></script>
+  <!-- Handlebars Template
+  –––––––––––––––––––––––––––––––––––––––––––––––––– -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
+
+  <script type="text/x-template" class="availableStockTemplate">
+    <h4>Shoes In Stock</h4>
+    {{#each shoes}}
+      <div class="one-third column items">
+        <img src="https://placebear.com/g/100/100" alt="Me">
+        <h5>Item Name</h5>
+        <table class="">
+          <tr class="">
+            <td class="">Brand:</td>
+            <td class="">{{brand}}</td>
+          </tr>
+          <tr class="">
+            <td class="">size:</td>
+            <td class="">{{size}}</td>
+          </tr>
+          <tr class="">
+            <td class="">Color:</td>
+            <td class="">{{color}}</td>
+          </tr>
+          <tr class="">
+            <td class="">Price:</td>
+            <td class="">{{price}}</td>
+          </tr>
+          <tr class="">
+            <td class="">In Stock:</td>
+            <td class="">{{in_stock}}</td>
+          </tr>
         </table>
-       {{/each}}
-    </script>
+      </div>
+    {{/each}}
+  </script>
+
+  <script type="text/x-template" class="afterSearchTemplate">
+    <h5>Search Results</h5>
+    {{#each scannedShoes}}
+      <div class="one-third column items">
+        <img src="https://placebear.com/g/100/100" alt="Me">
+        <h6>Item Name</h6>
+        <table>
+          <tr class="">
+            <td class="">Brand:</td>
+            <td class="">{{brand}}</td>
+          </tr>
+          <tr class="">
+            <td class="">Color:</td>
+            <td class="">{{color}}</td>
+          </tr>
+          <tr class="">
+            <td class="">Stock Left:</td>
+            <td class="">{{in_stock}}</td>
+          </tr>
+          <tr class="">
+            <td class="">Price:</td>
+            <td class="">{{price}}</td>
+          </tr>
+        </table>
+      </div>
+    {{/each}}
+  </script>
+
   <!-- CSS
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <link rel="stylesheet" href="css/normalize.css">
   <link rel="stylesheet" href="css/skeleton.css">
   <link rel="stylesheet" href="css/custom.css">
-
-
 
   <!-- Favicon
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
@@ -98,12 +110,25 @@
     </div>
     <div class="row search-area" style="margin-top: 5%; text-align:center;">
       <select class="brand" name="brand">
-         <option value="Adiddas">Adidas</option>
+         <option value="">none</option>
+         <option value="Adidas">Adidas</option>
+         <option value="Asics">Asics</option>
+         <option value="Caterpillar">Caterpillar</option>
+         <option value="Converse">Converse</option>
+         <option value="DC">DC</option>
+         <option value="Fila">Fila</option>
          <option value="Nike">Nike</option>
+         <option value="Lacoste">Lacoste</option>
          <option value="Puma">Puma</option>
+         <option value="Vans">Vans</option>
          <option value="Reebok">Reebok</option>
       </select>
       <select class="size" name="size">
+         <option value="0">none</option>
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
          <option value="5">5</option>
          <option value="6">6</option>
          <option value="7">7</option>
@@ -112,22 +137,81 @@
          <option value="10">10</option>
          <option value="11">11</option>
          <option value="12">12</option>
+         <option value="13">13</option>
+         <option value="14">14</option>
+         <option value="15">15</option>
       </select>
       <select class="color" name="color">
-         <option value="white">White</option>
-         <option value="black">Black</option>
+        <option value="">none</option>
+        <option value="beige">Beige</option>
+        <option value="black">Black</option>
+        <option value="brown">Brown</option>
+        <option value="green">Green</option>
+        <option value="grey">Grey</option>
+        <option value="navy">Navy</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Pink</option>
+        <option value="purple">Purple</option>
          <option value="red">Red</option>
-         <option value="green">Green</option>
+         <option value="white">White</option>
       </select>
       <button id="search-button" type="button" name="search" >Search</button>
     </div>
+    <div class="row add-area" style="margin-top: 5%; text-align:center;">
+      <select class="addBrand" name="addBrand">
+         <option value="Adidas">Adidas</option>
+         <option value="Asics">Asics</option>
+         <option value="Caterpillar">Caterpillar</option>
+         <option value="Converse">Converse</option>
+         <option value="DC">DC</option>
+         <option value="Fila">Fila</option>
+         <option value="Lacoste">Lacoste</option>
+         <option value="Nike">Nike</option>
+         <option value="Puma">Puma</option>
+         <option value="Reebok">Reebok</option>
+         <option value="Vans">Vans</option>
+      </select>
+      <select class="addSize" name="addSize">
+         <option value="1">1</option>
+         <option value="2">2</option>
+         <option value="3">3</option>
+         <option value="4">4</option>
+         <option value="5">5</option>
+         <option value="6">6</option>
+         <option value="7">7</option>
+         <option value="8">8</option>
+         <option value="9">9</option>
+         <option value="10">10</option>
+         <option value="11">11</option>
+         <option value="12">12</option>
+         <option value="13">13</option>
+         <option value="14">14</option>
+         <option value="15">15</option>
+      </select>
+      <select class="addColor" name="addColor">
+        <option value="beige">Beige</option>
+        <option value="black">Black</option>
+        <option value="brown">Brown</option>
+        <option value="green">Green</option>
+        <option value="grey">Grey</option>
+        <option value="navy">Navy</option>
+        <option value="orange">Orange</option>
+        <option value="yellow">Pink</option>
+        <option value="purple">Purple</option>
+         <option value="red">Red</option>
+         <option value="white">White</option>
+      </select>
+      <input type="number" name="addPrice" class="addPrice">
+      <input type="number" name="addstock" class="addStock">
+      <button id="add-button" type="button" name="add" >Add</button>
+    </div>
     <div class="row available-stock">
-       <div class="four columns insertAvailableStockElement">
+       <div class="twelve columns insertAvailableStockElement">
 
        </div>
     </div>
     <div class="row search-results" style="margin: 5% 5%; border: 1px solid black;">
-      <div class="four columns insertSearchDataElement">
+      <div class="twelve columns insertSearchDataElement">
 
       </div>
     </div>
