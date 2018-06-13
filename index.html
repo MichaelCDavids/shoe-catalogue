@@ -75,8 +75,8 @@
             <td>{{price}}</td>
           </tr>
         </table>
+        <button onclick="addToCart({{this.id}})" type="button" name="button">Add to cart</button>
       </div>
-      <button onclick="addToCart({{this.id}})" type="button" name="button">Add to cart</button>
     {{/each}}
   </script>
   <script type="text/x-template" class="shoppingCartTemplate">
@@ -87,6 +87,33 @@
         <td class="">{{total}}</td>
       </tr>
     </table>
+    {{#each cartShoes}}
+      <div class="one-third column items">
+        <table>
+          <tr>
+            <td>Brand:</td>
+            <td>{{brand}}</td>
+          </tr>
+          <tr>
+            <td>size:</td>
+            <td>{{size}}</td>
+          </tr>
+          <tr>
+            <td>Color:</td>
+            <td>{{color}}</td>
+          </tr>
+          <tr>
+            <td>Price:</td>
+            <td>{{price}}</td>
+          </tr>
+          <tr>
+            <td>Qty:</td>
+            <td>{{qty}}</td>
+          </tr>
+       </table>
+       <button onclick="removeFromCart({{this.id}})" type="button" name="button">Remove</button>
+      </div>
+    {{/each}}
   </script>
 
   <!-- CSS
@@ -107,16 +134,18 @@
   <div class="container">
     <div class="row">
       <div class="twelve columns" style="margin-top: 10%; text-align:center;">
-        <h4>Shoe Catalogue</h4>
+        <h4>Lubabalo's Shoe Catalogue</h4>
         <p>A simple online shoe catalogue</p>
       </div>
     </div>
-    <div class="row shopping-cart" style="margin: 5% 5%; border: 1px solid black;">
+
+    <div class="row">
+    </div>
+    <div class="row shopping-cart" style="margin: 5% 5%;">
      <div class="twelve columns insertShoppingCartElement">
 
      </div>
-    </div>
-    <div class="row">
+     <button id="clear-button" type="button" name="clear" style="margin-top:5%;" >Clear Cart</button>
     </div>
     <div class="row search-area" style="margin-top: 5%; text-align:center;">
       <select class="brand" name="brand">
@@ -125,12 +154,14 @@
          <option value="Asics">Asics</option>
          <option value="Caterpillar">Caterpillar</option>
          <option value="Converse">Converse</option>
-         <option value="DC">DC</option>
+         <option value="DC Shoes">DC Shoes</option>
+         <option value="Etnies">Etnies</option>
          <option value="Fila">Fila</option>
          <option value="Nike">Nike</option>
-         <option value="New">New Balance</option>
+         <option value="New Balance">New Balance</option>
          <option value="Lacoste">Lacoste</option>
          <option value="Puma">Puma</option>
+         <option value="Timberland">Timberland</option>
          <option value="Vans">Vans</option>
          <option value="Reebok">Reebok</option>
       </select>
@@ -154,33 +185,43 @@
       </select>
       <select class="color" name="color">
         <option value="">none</option>
+        <option value="azure">Azure</option>
         <option value="beige">Beige</option>
         <option value="black">Black</option>
         <option value="brown">Brown</option>
         <option value="green">Green</option>
         <option value="grey">Grey</option>
+        <option value="gold">Gold</option>
         <option value="navy">Navy</option>
         <option value="orange">Orange</option>
-        <option value="yellow">Pink</option>
+        <option value="olive">Olive</option>
+        <option value="pink">Pink</option>
+        <option value="powderblue">Powder Blue</option>
         <option value="purple">Purple</option>
-         <option value="red">Red</option>
-         <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="slategray">Slate Gray</option>
+        <option value="snow">Snow</option>
+        <option value="white">White</option>
       </select>
       <button id="search-button" type="button" name="search" >Search</button>
     </div>
+
     <div class="row add-area" style="margin-top: 5%; text-align:center;">
       <select class="addBrand" name="addBrand">
          <option value="Adidas">Adidas</option>
          <option value="Asics">Asics</option>
          <option value="Caterpillar">Caterpillar</option>
          <option value="Converse">Converse</option>
-         <option value="DC">DC</option>
+         <option value="DC Shoes">DC Shoes</option>
+         <option value="Etnies">Etnies</option>
          <option value="Fila">Fila</option>
-         <option value="Lacoste">Lacoste</option>
          <option value="Nike">Nike</option>
+         <option value="New Balance">New Balance</option>
+         <option value="Lacoste">Lacoste</option>
          <option value="Puma">Puma</option>
-         <option value="Reebok">Reebok</option>
+         <option value="Timberland">Timberland</option>
          <option value="Vans">Vans</option>
+         <option value="Reebok">Reebok</option>
       </select>
       <select class="addSize" name="addSize">
          <option value="1">1</option>
@@ -200,30 +241,34 @@
          <option value="15">15</option>
       </select>
       <select class="addColor" name="addColor">
+        <option value="azure">Azure</option>
         <option value="beige">Beige</option>
         <option value="black">Black</option>
         <option value="brown">Brown</option>
         <option value="green">Green</option>
         <option value="grey">Grey</option>
+        <option value="gold">Gold</option>
         <option value="navy">Navy</option>
         <option value="orange">Orange</option>
-        <option value="yellow">Pink</option>
+        <option value="olive">Olive</option>
+        <option value="pink">Pink</option>
+        <option value="powderblue">Powder Blue</option>
         <option value="purple">Purple</option>
-         <option value="red">Red</option>
-         <option value="white">White</option>
+        <option value="red">Red</option>
+        <option value="slategray">Slate Gray</option>
+        <option value="snow">Snow</option>
+        <option value="white">White</option>
       </select>
       <input type="number" name="addPrice" class="addPrice">
       <input type="number" name="addstock" class="addStock">
       <button id="add-button" type="button" name="add" >Add</button>
-      <button id="clear-button" type="button" name="clear" >Clear Cart</button>
-
     </div>
     <div class="row available-stock">
-       <div class="twelve columns insertAvailableStockElement">
+       <div class="twelve columns insertAvailableStockElement stock">
 
        </div>
     </div>
-    <div class="row search-results" style="margin: 5% 5%; border: 1px solid black;">
+    <div class="row search-results" style="margin: 5% 5%;">
       <div class="twelve columns insertSearchDataElement">
 
       </div>
