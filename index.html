@@ -24,31 +24,29 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
 
   <script type="text/x-template" class="availableStockTemplate">
-    <h4>Shoes In Stock</h4>
+    <h4 style="text-align:center;">Shoes In Stock</h4>
     {{#each shoes}}
       <div class="one-third column items">
-        <img src="https://placebear.com/g/100/100" alt="Me">
-        <h5>Item Name</h5>
-        <table class="">
-          <tr class="">
-            <td class="">Brand:</td>
-            <td class="">{{brand}}</td>
+        <table>
+          <tr>
+            <td>Brand:</td>
+            <td>{{brand}}</td>
           </tr>
-          <tr class="">
-            <td class="">size:</td>
-            <td class="">{{size}}</td>
+          <tr>
+            <td>size:</td>
+            <td>{{size}}</td>
           </tr>
-          <tr class="">
-            <td class="">Color:</td>
-            <td class="">{{color}}</td>
+          <tr>
+            <td>Color:</td>
+            <td>{{color}}</td>
           </tr>
-          <tr class="">
-            <td class="">Price:</td>
-            <td class="">{{price}}</td>
+          <tr>
+            <td>Price:</td>
+            <td>{{price}}</td>
           </tr>
-          <tr class="">
-            <td class="">In Stock:</td>
-            <td class="">{{in_stock}}</td>
+          <tr>
+            <td>In Stock:</td>
+            <td>{{in_stock}}</td>
           </tr>
        </table>
        <button onclick="addToCart({{this.id}})" type="button" name="button">Add to cart</button>
@@ -59,39 +57,36 @@
     <h5>Search Results</h5>
     {{#each scannedShoes}}
       <div class="one-third column items">
-        <img src="https://placebear.com/g/100/100" alt="Me">
-        <h6>Item Name</h6>
         <table>
-          <tr class="">
-            <td class="">Brand:</td>
-            <td class="">{{brand}}</td>
+          <tr>
+            <td>Brand:</td>
+            <td>{{brand}}</td>
           </tr>
-          <tr class="">
-            <td class="">Color:</td>
-            <td class="">{{color}}</td>
+          <tr>
+            <td>Color:</td>
+            <td>{{color}}</td>
           </tr>
-          <tr class="">
-            <td class="">Stock Left:</td>
-            <td class="">{{in_stock}}</td>
+          <tr>
+            <td>Stock Left:</td>
+            <td>{{in_stock}}</td>
           </tr>
-          <tr class="">
-            <td class="">Price:</td>
-            <td class="">{{price}}</td>
+          <tr>
+            <td>Price:</td>
+            <td>{{price}}</td>
           </tr>
         </table>
       </div>
+      <button onclick="addToCart({{this.id}})" type="button" name="button">Add to cart</button>
     {{/each}}
   </script>
   <script type="text/x-template" class="shoppingCartTemplate">
-    <h5>Cart Total</h5>
-      <div class="twelve columns cart">
-        <table>
-          <tr class="">
-            <td class="">Total Cost:</td>
-            <td class="">{{total}}</td>
-          </tr>
-        </table>
-      </div>
+    <h5>Shopping Cart</h5>
+    <table>
+      <tr class="">
+        <td class="">Total Cost:</td>
+        <td class="">{{total}}</td>
+      </tr>
+    </table>
   </script>
 
   <!-- CSS
@@ -133,6 +128,7 @@
          <option value="DC">DC</option>
          <option value="Fila">Fila</option>
          <option value="Nike">Nike</option>
+         <option value="New">New Balance</option>
          <option value="Lacoste">Lacoste</option>
          <option value="Puma">Puma</option>
          <option value="Vans">Vans</option>
