@@ -70,7 +70,6 @@ function ShoeCatalogue(storedData,storedCart){
    function addItemToCart(id){
       let isThere = false;
       let foundItem = shoes.find((current) => (current.id === id));
-
       if (foundItem.in_stock > 0) {
          shoppingCart.map((current) => {
             if (current.id === id) {
