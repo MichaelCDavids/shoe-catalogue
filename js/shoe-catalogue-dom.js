@@ -89,5 +89,6 @@ clearButton.addEventListener('click',function(){
 showButton.addEventListener('click',function(){
    location.hash = "cart";
    insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+   insertSearchDataElement.innerHTML = "";
    availableStockElement.innerHTML = ""
 });
