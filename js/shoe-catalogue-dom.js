@@ -42,7 +42,7 @@ var shoeCatalogue = ShoeCatalogue(storedShoes, storedCart);
 function addToCart(id) {
    shoeCatalogue.addCart(id);
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
-   insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+   //insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
    localStorage.setItem('Cart',JSON.stringify(shoeCatalogue.Cart()));
    localStorage.setItem('Shoes',JSON.stringify(shoeCatalogue.shoesInStock()));
 }
