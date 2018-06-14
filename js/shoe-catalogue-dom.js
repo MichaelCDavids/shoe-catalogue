@@ -11,7 +11,7 @@ var addStock = document.querySelector(".addStock");
 var addButton = document.querySelector("#add-button");
 var clearButton = document.querySelector("#clear-button");
 
-var removeButton = document.querySelector("#clear-button");
+var showButton = document.querySelector("#show-button");
 
 //Template for available stock
 var availableStockTemplateSource = document.querySelector(".availableStockTemplate").innerHTML;
@@ -54,7 +54,7 @@ function removeFromCart(id){
 //on page load event
 window.addEventListener('load',function(){
   availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
-  insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+  //insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
 });
 
 searchButton.addEventListener('click',function(){
@@ -79,4 +79,11 @@ clearButton.addEventListener('click',function(){
    localStorage.setItem("Shoes",JSON.stringify(shoeCatalogue.shoesInStock()))
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+});
+
+
+showButton.addEventListener('click',function(){
+   availableStockElement.innerHTML = ""
+   insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
+
 });
