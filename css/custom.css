@@ -19,11 +19,11 @@
 }
 
 .stock{
-   height: 500px;
+   height: auto;
    overflow: scroll;
    scroll-behavior: smooth;
 }
 
-::-webkit-scrollbar { 
+::-webkit-scrollbar {
     display: none;
 }
