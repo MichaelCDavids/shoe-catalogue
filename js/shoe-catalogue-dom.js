@@ -45,11 +45,11 @@ var shoeCatalogue = ShoeCatalogue(storedShoes, storedCart);
 //on page load event
 window.addEventListener('load',function(){
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
-   //location.hash = "";
+   location.hash = "";
 });
 
 searchButton.addEventListener('click',function(){
-   //location.hash = "search";
+   location.hash = "search";
    availableStockElement.innerHTML = "";
    insertSearchDataElement.innerHTML = templateShoeCatalogue({scannedShoes : shoeCatalogue.filteredShoes(colorSelector.value,Number(sizeSelector.value),brandSelector.value)});
 });
@@ -88,7 +88,7 @@ clearButton.addEventListener('click',function(){
    localStorage.setItem("Shoes",JSON.stringify(shoeCatalogue.shoesInStock()))
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    insertShoppingCartElement.innerHTML = "";
-   //location.hash = "";
+   location.hash = "";
 });
 
 
