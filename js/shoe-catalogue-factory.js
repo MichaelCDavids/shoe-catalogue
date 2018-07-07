@@ -1,16 +1,26 @@
 function ShoeCatalogue(storedData,storedCart){
    var Total = 0
    var shoes = [
-      {id:1,color : 'white', brand : "Nike", price : 1350, size : 1, in_stock : 3},
-      {id:2,color : 'green', brand : "Adidas", price : 1999, size : 1,in_stock : 25},
-      {id:3,color : 'black', brand : "Lacoste", price : 1540, size : 2,in_stock : 12},
-      {id:4,color : 'orange', brand : "Nike", price : 1350, size : 2,in_stock : 3},
-      {id:5,color : 'orange', brand : "Vans", price : 1999, size : 3,in_stock : 50},
-      {id:6,color : 'white', brand : "Nike", price : 11200, size : 3,in_stock : 1},
-      {id:7,color : 'orange', brand : "Nike", price : 1350, size : 4,in_stock : 2},
-      {id:8,color : 'red', brand : "Fila", price : 750, size : 4,in_stock : 10},
-      {id:9,color : 'blue', brand : "Vans", price : 2999, size : 5,in_stock : 8},
-      {id:10,color : 'white', brand : "Fila", price : 5000, size : 5, in_stock : 3}
+      {id:1,color : 'azure', brand : "Adidas", price : 1350, size : 1, in_stock : 3},
+      {id:2,color : 'beige', brand : "Asics", price : 1999, size : 2,in_stock : 25},
+      {id:3,color : 'black', brand : "Caterpillar", price : 1540, size : 3,in_stock : 12},
+      {id:4,color : 'brown', brand : "Converse", price : 1350, size : 4,in_stock : 3},
+      {id:5,color : 'green', brand : "DC Shoes", price : 1999, size : 5,in_stock : 50},
+      {id:6,color : 'grey', brand : "Etnies", price : 11200, size : 6,in_stock : 1},
+      {id:7,color : 'gold', brand : "Fila", price : 1350, size : 7,in_stock : 2},
+      {id:8,color : 'navy', brand : "Nike", price : 750, size : 8,in_stock : 10},
+      {id:9,color : 'orange', brand : "New Balance", price : 2999, size : 9,in_stock : 8},
+      {id:10,color : 'olive', brand : "Lacoste", price : 5000, size : 10, in_stock : 3},
+      {id:11,color : 'pink', brand : "Puma", price : 1350, size : 11, in_stock : 3},
+      {id:12,color : 'powderblue', brand : "Timberland", price : 1999, size : 12,in_stock : 25},
+      {id:13,color : 'purple', brand : "Vans", price : 1540, size : 13,in_stock : 12},
+      {id:14,color : 'red', brand : "Reebok", price : 1350, size : 14,in_stock : 3},
+      {id:15,color : 'slategray', brand : "Timberland", price : 1999, size : 15,in_stock : 50},
+      {id:16,color : 'snow', brand : "Vans", price : 11200, size : 1,in_stock : 1},
+      {id:17,color : 'white', brand : "Caterpillar", price : 1350, size : 2,in_stock : 2},
+      {id:18,color : 'red', brand : "Nike", price : 750, size : 3,in_stock : 10},
+      {id:19,color : 'blue', brand : "Vans", price : 2999, size : 4,in_stock : 8},
+      {id:20,color : 'white', brand : "DC Shoes", price : 5000, size : 5, in_stock : 3}
    ];
 
    var shoppingCart = [];
@@ -28,7 +38,13 @@ function ShoeCatalogue(storedData,storedCart){
    }
 
    function getShoes(){
-      return shoes;
+     let stockShoes = [];
+     for (var i = 0; i < shoes.length; i++) {
+       if (shoes[i].in_stock!==0) {
+         stockShoes.push(shoes[i]);
+       }
+     }
+      return stockShoes;
    }
 
    function filterShoes(color,size,brand){
@@ -97,14 +113,17 @@ function ShoeCatalogue(storedData,storedCart){
       }
    }
 
+
    function clearCart(){
-      for (var i = 0; i < shoppingCart.length; i++) {
-         for (var k = 0; k < shoes.length; k++) {
-            if (shoes[k].id === shoppingCart[i].id) {
-               shoes[k].in_stock += shoppingCart[i].qty;
-            }
-         }
-      }
+      // for (var i = 0; i < shoppingCart.length; i++) {
+      //    for (var k = 0; k < shoes.length; k++) {
+      //       if (shoes[k].id === shoppingCart[i].id) {
+      //          if (shoes[k].in_stock>0 && shoes[k].in_stock-shoppingCart[i].qty>0){
+      //            shoppingCart[i].qty ;//removing stock on Checkout
+      //          }
+      //       }
+      //    }
+      // }
       Total = 0;
       return shoppingCart = [];
    }
