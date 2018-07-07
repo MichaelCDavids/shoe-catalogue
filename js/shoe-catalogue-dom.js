@@ -9,8 +9,11 @@ var addPrice = document.querySelector(".addPrice");
 var addSize = document.querySelector(".addSize");
 var addStock = document.querySelector(".addStock");
 var addButton = document.querySelector("#add-button");
-var clearButton = document.querySelector("#clear-button");
 
+
+
+var clearButton = document.querySelector("#clear-button");
+var stockButton = document.querySelector("#stock-button");
 var showButton = document.querySelector("#show-button");
 
 //Template for available stock
@@ -42,11 +45,11 @@ var shoeCatalogue = ShoeCatalogue(storedShoes, storedCart);
 //on page load event
 window.addEventListener('load',function(){
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
-   location.hash = "";
+   //location.hash = "";
 });
 
 searchButton.addEventListener('click',function(){
-   location.hash = "search";
+   //location.hash = "search";
    availableStockElement.innerHTML = "";
    insertSearchDataElement.innerHTML = templateShoeCatalogue({scannedShoes : shoeCatalogue.filteredShoes(colorSelector.value,Number(sizeSelector.value),brandSelector.value)});
 });
@@ -74,7 +77,10 @@ function addToCart(id) {
 }
 
 
-
+stockButton.addEventListener("click",function(){
+  availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
+  insertShoppingCartElement.innerHTML = "";
+});
 
 clearButton.addEventListener('click',function(){
    shoeCatalogue.Clear();
@@ -82,12 +88,12 @@ clearButton.addEventListener('click',function(){
    localStorage.setItem("Shoes",JSON.stringify(shoeCatalogue.shoesInStock()))
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    insertShoppingCartElement.innerHTML = "";
-   location.hash = "";
+   //location.hash = "";
 });
 
 
 showButton.addEventListener('click',function(){
-   location.hash = "cart";
+   //location.hash = "cart";
    insertShoppingCartElement.innerHTML = templateShoppingCart({cartShoes : shoeCatalogue.Cart(), total: shoeCatalogue.cartTotal()});
    insertSearchDataElement.innerHTML = "";
    availableStockElement.innerHTML = ""
