@@ -33,7 +33,7 @@
             <td>{{brand}}</td>
           </tr>
           <tr>
-            <td>size:</td>
+            <td>Shoe Size:</td>
             <td>{{size}}</td>
           </tr>
           <tr>
@@ -53,6 +53,7 @@
       </div>
     {{/each}}
   </script>
+
   <script type="text/x-template" class="afterSearchTemplate">
     <h5>Search Results</h5>
     {{#each scannedShoes}}
@@ -67,6 +68,10 @@
             <td>{{color}}</td>
           </tr>
           <tr>
+            <td>Shoe Size:</td>
+            <td>{{size}}</td>
+          </tr>
+          <tr>
             <td>Stock Left:</td>
             <td>{{in_stock}}</td>
           </tr>
@@ -79,6 +84,7 @@
       </div>
     {{/each}}
   </script>
+
   <script type="text/x-template" class="shoppingCartTemplate">
     <h5>Shopping Cart</h5>
     <table>
@@ -95,7 +101,7 @@
             <td>{{brand}}</td>
           </tr>
           <tr>
-            <td>size:</td>
+            <td>Shoe Size:</td>
             <td>{{size}}</td>
           </tr>
           <tr>
@@ -113,6 +119,7 @@
        </table>
       </div>
     {{/each}}
+
   </script>
 
   <!-- CSS
@@ -131,6 +138,8 @@
   <!-- Primary Page Layout
   –––––––––––––––––––––––––––––––––––––––––––––––––– -->
   <div class="container">
+
+
     <div class="row">
       <div class="twelve columns" style="margin-top: 10%; text-align:center;">
         <h4>Lubabalo's Shoe Catalogue</h4>
@@ -138,8 +147,6 @@
       </div>
     </div>
 
-    <div class="row">
-    </div>
 
     <div class="row search-area" style="margin-top: 5%; text-align:center;">
       <select class="brand" name="brand">
@@ -201,6 +208,7 @@
     </div>
 
     <div class="row add-area" style="margin-top: 5%; text-align:center;">
+
       <select class="addBrand" name="addBrand">
          <option value="Adidas">Adidas</option>
          <option value="Asics">Asics</option>
@@ -217,6 +225,7 @@
          <option value="Vans">Vans</option>
          <option value="Reebok">Reebok</option>
       </select>
+
       <select class="addSize" name="addSize">
          <option value="1">1</option>
          <option value="2">2</option>
@@ -234,6 +243,7 @@
          <option value="14">14</option>
          <option value="15">15</option>
       </select>
+
       <select class="addColor" name="addColor">
         <option value="azure">Azure</option>
         <option value="beige">Beige</option>
@@ -253,27 +263,34 @@
         <option value="snow">Snow</option>
         <option value="white">White</option>
       </select>
+
       <input type="number" name="addPrice" class="addPrice" placeholder="Item Price">
       <input type="number" name="addstock" class="addStock" placeholder="Amount In Stock">
+
       <button id="add-button" type="button" name="add" >Add</button>
     </div>
+
+    <!-- shopping cart section -->
     <div class="row shopping-cart" style="margin: 5% 5%;">
      <div class="twelve columns insertShoppingCartElement">
 
      </div>
-     <button id="clear-button" type="button" name="clear" style="margin-top:5%;" >Clear Cart</button>
-     <button id="show-button" type="button" name="show" style="margin-top:5%;" >Show Cart</button>
     </div>
+    <!-- search results section -->
     <div class="row search-results" style="margin: 5% 5%;">
       <div class="twelve columns insertSearchDataElement">
 
       </div>
     </div>
+    <!-- available stock section -->
     <div class="row available-stock">
        <div class="twelve columns insertAvailableStockElement stock">
 
        </div>
     </div>
+    <button id="clear-button" type="button" name="clear" style="margin-top:5%;" >Checkout</button>
+    <button id="stock-button" type="button" name="stock" style="margin-top:5%;" >Stock</button>
+    <button id="show-button" type="button" name="show" style="margin-top:5%;" >Cart</button>
   </div>
 
 <!-- End Document
