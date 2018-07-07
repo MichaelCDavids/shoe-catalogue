@@ -44,8 +44,8 @@ var shoeCatalogue = ShoeCatalogue(storedShoes, storedCart);
 
 //on page load event
 window.addEventListener('load',function(){
-   availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
-   location.hash = "";
+  location.hash = "home";
+  availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
 });
 
 searchButton.addEventListener('click',function(){
@@ -69,7 +69,7 @@ function addToCart(id) {
    shoeCatalogue.addCart(id);
    if (location.hash === "#search") {
       insertSearchDataElement.innerHTML = templateShoeCatalogue({scannedShoes : shoeCatalogue.filteredShoes(colorSelector.value,Number(sizeSelector.value),brandSelector.value)});
-   }else if(location.hash === ""){
+   }else if(location.hash === "home" || location.hash === "stock"){
       availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    }
    localStorage.setItem('Cart',JSON.stringify(shoeCatalogue.Cart()));
@@ -78,6 +78,7 @@ function addToCart(id) {
 
 
 stockButton.addEventListener("click",function(){
+  location.hash = "#stock"
   availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
   insertShoppingCartElement.innerHTML = "";
 });
@@ -88,7 +89,7 @@ clearButton.addEventListener('click',function(){
    localStorage.setItem("Shoes",JSON.stringify(shoeCatalogue.shoesInStock()))
    availableStockElement.innerHTML = templateCatalogue({shoes : shoeCatalogue.shoesInStock()});
    insertShoppingCartElement.innerHTML = "";
-   location.hash = "";
+   location.hash = "#home";
 });
 
 
