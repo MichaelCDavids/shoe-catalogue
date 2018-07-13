@@ -123,14 +123,15 @@ function ShoeCatalogue(storedData,storedCart){
       console.log(foundItem);
       if (foundItem) {
          shoes.map((current) => {
-            if (current.id === id) {
+            if (current.id === foundItem.id) {
                console.log(current);
                current.in_stock += foundItem.qty;
             }
          });
 
     }
-    shoppingCart.pop(foundItem);
+
+   shoppingCart.splice(shoppingCart.indexOf(foundItem),1);
   }
 
    function checkout(){
