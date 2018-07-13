@@ -117,9 +117,12 @@
             <td>{{qty}}</td>
           </tr>
        </table>
+       <button onclick="removeFromCart({{this.id}})" type="button" name="remove">Remove</button>
       </div>
-    {{/each}}
 
+    {{/each}}
+    <!-- <button onclick="clearCart({{this.id}})" type="button" name="clear">Clear Cart</button> -->
+    <button onclick="checkout()" type="button" name="checkout">Checkout</button>
   </script>
 
   <!-- CSS
@@ -269,7 +272,10 @@
 
       <button id="add-button" type="button" name="add" >Add</button>
     </div>
-
+    <div class="buttons">
+      <button id="stock-button" type="button" name="stock" style="margin-top:5%;" >Stock</button>
+      <button id="show-button" type="button" name="show" style="margin-top:5%;" >Cart</button>
+    </div>
     <!-- shopping cart section -->
     <div class="row shopping-cart" style="margin: 5% 5%;">
      <div class="twelve columns insertShoppingCartElement">
@@ -288,9 +294,7 @@
 
        </div>
     </div>
-    <button id="clear-button" type="button" name="clear" style="margin-top:5%;" >Checkout</button>
-    <button id="stock-button" type="button" name="stock" style="margin-top:5%;" >Stock</button>
-    <button id="show-button" type="button" name="show" style="margin-top:5%;" >Cart</button>
+
   </div>
 
 <!-- End Document
