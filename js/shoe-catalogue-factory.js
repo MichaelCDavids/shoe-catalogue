@@ -38,13 +38,13 @@ function ShoeCatalogue(storedData,storedCart){
    }
 
    function getShoes(){
-     let stockShoes = [];
-     for (var i = 0; i < shoes.length; i++) {
-       if (shoes[i].in_stock!==0) {
-         stockShoes.push(shoes[i]);
-       }
-     }
-      return stockShoes;
+     // let stockShoes = [];
+     // for (var i = 0; i < shoes.length; i++) {
+     //   if (shoes[i].in_stock!==0) {
+     //     stockShoes.push(shoes[i]);
+     //   }
+     // }
+      return shoes;
    }
 
    function filterShoes(color,size,brand){
@@ -113,17 +113,27 @@ function ShoeCatalogue(storedData,storedCart){
       }
    }
 
-
-   function clearCart(){
-      // for (var i = 0; i < shoppingCart.length; i++) {
-      //    for (var k = 0; k < shoes.length; k++) {
-      //       if (shoes[k].id === shoppingCart[i].id) {
-      //          if (shoes[k].in_stock>0 && shoes[k].in_stock-shoppingCart[i].qty>0){
-      //            shoppingCart[i].qty ;//removing stock on Checkout
-      //          }
-      //       }
-      //    }
+  function removeFromCart(id){
+      // for (var k = 0; k < shoes.length; k++) {
+      //   if (shoes[k].id === id) {
+      //     shoes[k].in_stock += qty;
+      //   }
       // }
+      let foundItem = shoppingCart.find((current) => (current.id === id));
+      console.log(foundItem);
+      if (foundItem) {
+         shoes.map((current) => {
+            if (current.id === id) {
+               console.log(current);
+               current.in_stock += foundItem.qty;
+            }
+         });
+
+    }
+    shoppingCart.pop(foundItem);
+  }
+
+   function checkout(){
       Total = 0;
       return shoppingCart = [];
    }
@@ -146,7 +156,8 @@ function ShoeCatalogue(storedData,storedCart){
       addStockItem : addItem,
       addCart : addItemToCart,
       Cart : getCart,
-      Clear : clearCart,
+      Checkout : checkout,
+      Remove : removeFromCart,
       cartTotal : cartTotal
    }
 }
